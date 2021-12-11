@@ -1,6 +1,23 @@
-## Getting Started
+# Java technical test CirilGroup (JDK 11)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Simulate fire propagation in a forest
+
+## Usage
+
+Run using a predefined map from the maps folder
+> ./fire (propagation rate) (map file)
+
+Run using arguments
+> ./fire (propagation rate) (map size)"[h, l]" (fire init positions)..."[y, x]"
+
+The program will stop after all fires stop propagating.
+
+### Arguments
+
+> - propagation rate : a floating point value ranging between 0 and 1, a low value is a high propagation prbability ex.: "0.5"
+> - map file : a file from the maps/ folder ex.: "maps/empty.forest"
+> - map size : size of initial map ex.: "[100, 100]"
+> - fire init positions : a list of starting positions for the fire (positions that are out of the map will not trigger a fire) ex.: "[0, 0]" "[100, 100]"
 
 ## Folder Structure
 
