@@ -13,12 +13,6 @@ public class Position {
      * @param x coordinate
      */
     public Position(Integer y, Integer x){
-        if(y < 0){
-            y = 0;
-        }
-        if(x < 0){
-            x = 0;
-        }
         this.position = new Integer[]{y, x};
     }
 
