@@ -14,6 +14,11 @@ public class App {
     private static int l = 0;
     private static ArrayList<Position> fires = null;
 
+    /**
+     * Main
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         App.parseArgs(args);
 
@@ -42,6 +47,11 @@ public class App {
         }while(sc.nextLine() != null);
     }
 
+    /**
+     * Parse input using regex and initialize settings
+     * @param args from Main
+     * @throws Exception
+     */
     public static void parseArgs(String[] args) throws Exception{
         try {
             // first arg is the propagation rate
@@ -52,15 +62,17 @@ public class App {
             App.propagation = propagation;
 
             // second arg is a forest file (maps/file.forest) or size ([5, 5])
-            // if file : load it and run sim
-            // if size : build forest
+            // if size is given, get fire positions from following args
             String map =  new String(args[1]);
             map = map.replaceAll(" ", "");
 
-            boolean size = Pattern.matches("\\[[0-9]+,[0-9]+\\]", map);
             boolean file = Pattern.matches(".*[a-zA-Z]+.forest$", map);
+            boolean size = Pattern.matches("\\[[0-9]+,[0-9]+\\]", map);
 
-            if(size){
+            if(file){
+                App.file = map;
+            }
+            else if(size){
                 Pattern p = Pattern.compile("\\d+");
                 Matcher m = p.matcher(map);
 
@@ -70,6 +82,7 @@ public class App {
                 m.find();
                 App.l = Integer.parseInt(m.group());
 
+                // define fire positions
                 App.fires = new ArrayList<Position>();
 
                 for(int i = 2; i < args.length; i++){
@@ -91,9 +104,6 @@ public class App {
                     }
                 }
             }
-            else if (file){
-                App.file = map;
-            }
             else{
                 throw new Exception("Map definition "+args[1]+" is invalid.");
             }
@@ -103,8 +113,17 @@ public class App {
         }
     }
 
+    /**
+     * Usage
+     */
     public static void usage(){
-        System.out.println("USAGE");
+        System.out.println("USAGE:");
+        System.out.println("java -jar test.jar (propagation rate) (map file)");
+        System.out.println("java -jar test.jar (propagation rate) (map size) ...(fire init positions)");
+        System.out.println("\t- propagation rate : a floating point value ranging between 0 and 1, a low value is a high propagation prbability ex.: 0.5");
+        System.out.println("\t- map file : a file from the maps/ folder ex.: maps/empty.forest");
+        System.out.println("\t- map size : size of initial map as [h, l] ex.: [100, 100]");
+        System.out.println("\t- fire init positions : a list of starting positions for the fire as [y, x] (positions that are out of the map will not trigger a fire) ex.: [0, 0] [100, 100]");
     }
 
     public static Forest loadFile(String file) throws Exception{
