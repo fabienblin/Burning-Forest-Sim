@@ -5,9 +5,11 @@ Simulate fire propagation in a forest.
 ## Usage
 
 Run using a predefined map from the maps folder
+
 `./fire (propagation rate) (map file)`
 
 Run using arguments
+
 `./fire (propagation rate) (map size) ...(fire init positions)`
 
 The program will stop after all fires stop propagating.
