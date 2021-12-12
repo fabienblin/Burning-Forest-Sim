@@ -21,6 +21,10 @@ The program will stop after all fires stop propagating.
 - `map size : size of initial map as [h, l] ex.: "[100, 100]"`
 - `fire init positions : a list of starting positions for the fire as [y, x] (positions that are out of the map will not trigger a fire) ex.: "[0, 0]" "[100, 100]"`
 
+## Demo
+
+![Broken Gif?](https://github.com/fabienblin/Burning-Forest-Sim./demo.gif)
+
 ## Folder Structure
 
 The workspace contains two folders by default, where:
