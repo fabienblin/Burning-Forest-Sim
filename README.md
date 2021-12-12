@@ -23,7 +23,7 @@ The program will stop after all fires stop propagating.
 
 ## Demo
 
-![Broken Gif?](https://github.com/fabienblin/Burning-Forest-Sim./demo.gif)
+![Broken Gif?](https://github.com/fabienblin/Burning-Forest-Sim./blob/main/demo.gif)
 
 ## Folder Structure
 
